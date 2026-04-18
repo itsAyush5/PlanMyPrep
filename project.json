@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "visual": {
+      "presentation": {
+        "themes": {
+          "44d13f53-5b72-4543-85b5-3c24cfb80ee5": {
+            "template": "basic",
+            "templateAdditionalOptions": {},
+            "palette": {
+              "primary": {
+                "0": "#000000",
+                "5": "#001320",
+                "10": "#001e30",
+                "15": "#00283f",
+                "20": "#00344f",
+                "25": "#003f5f",
+                "30": "#004b70",
+                "35": "#005782",
+                "40": "#006494",
+                "50": "#097eb8",
+                "60": "#3b98d3",
+                "70": "#5bb3f0",
+                "80": "#8ecdff",
+                "90": "#cae6ff",
+                "95": "#e6f2ff",
+                "98": "#f6f9ff",
+                "99": "#fcfcff",
+                "100": "#ffffff"
+              },
+              "secondary": {
+                "0": "#000000",
+                "5": "#02121e",
+                "10": "#0c1d29",
+                "15": "#172734",
+                "20": "#22323f",
+                "25": "#2d3d4a",
+                "30": "#394956",
+                "35": "#445462",
+                "40": "#50606f",
+                "50": "#697988",
+                "60": "#8293a2",
+                "70": "#9cadbd",
+                "80": "#b8c8d9",
+                "90": "#d3e5f6",
+                "95": "#e6f2ff",
+                "98": "#f6f9ff",
+                "99": "#fcfcff",
+                "100": "#ffffff"
+              },
+              "tertiary": "",
+              "error": {
+                "0": "#000000",
+                "5": "#2d0001",
+                "10": "#410002",
+                "15": "#540003",
+                "20": "#690005",
+                "25": "#7e0007",
+                "30": "#93000a",
+                "35": "#a80710",
+                "40": "#ba1a1a",
+                "50": "#de3730",
+                "60": "#ff5449",
+                "70": "#ff897d",
+                "80": "#ffb4ab",
+                "90": "#ffdad6",
+                "95": "#ffedea",
+                "98": "#fff8f7",
+                "99": "#fffbff",
+                "100": "#ffffff"
+              },
+              "neutral": {
+                "0": "#000000",
+                "5": "#0f1113",
+                "10": "#1a1c1e",
+                "15": "#242628",
+                "20": "#2e3133",
+                "25": "#3a3c3e",
+                "30": "#454749",
+                "35": "#515255",
+                "40": "#5d5e61",
+                "50": "#76777a",
+                "60": "#8f9193",
+                "70": "#aaabae",
+                "80": "#c6c6c9",
+                "90": "#e2e2e5",
+                "95": "#f0f0f3",
+                "98": "#f9f9fc",
+                "99": "#fcfcff",
+                "100": "#ffffff"
+              },
+              "neutralVariant": {
+                "0": "#000000",
+                "5": "#0c1217",
+                "10": "#161c22",
+                "15": "#20262c",
+                "20": "#2b3137",
+                "25": "#363c42",
+                "30": "#41474d",
+                "35": "#4d5359",
+                "40": "#595f65",
+                "50": "#72787e",
+                "60": "#8b9198",
+                "70": "#a6acb3",
+                "80": "#c1c7ce",
+                "90": "#dde3ea",
+                "95": "#ecf1f9",
+                "98": "#f6f9ff",
+                "99": "#fcfcff",
+                "100": "#ffffff"
+              }
+            },
+            "themeColors": {
+              "primaryColor": "",
+              "secondaryColor": "",
+              "backgroundColor": "",
+              "primaryTextColor": "",
+              "textColor": ""
+            },
+            "splashScreen": {
+              "storedData": {
+                "handle": "drive:/1ARXuhwmy2Cfal4wXJv6P8PnXrQg7m3A7",
+                "mimeType": "image/png",
+                "contentLength": 1633228
+              }
+            }
+          }
+        },
+        "theme": "44d13f53-5b72-4543-85b5-3c24cfb80ee5"
+      }
+    },
+    "intent": "You are an expert study planner.\n\nCreate a complete, personalized study plan based on the student’s input.\n\nInput:\n{{all_inputs}}\n\nYour output should include:\n\n1. Student Summary\n- Exam name\n- Days remaining\n- Subjects\n- Weak areas\n- Daily study hours\n\n2. Study Strategy\n- Plan type (easy / balanced / aggressive)\n- Subject priority order\n- How daily time should be divided\n- Revision approach\n- Mock test frequency\n\n3. Study Plan\n- Create a detailed day-by-day plan for the next 14 days\n- For each day include:\n  - Subjects to study\n  - Tasks/topics\n  - Time allocation\n  - Revision time\n- After 14 days, give a simple weekly pattern for the remaining time\n\n4. Revision Plan\n- Show when to revise (Day 1, Day 3, Day 7, etc.)\n- Mention what subjects to revise and how long\n\n5. Today’s Plan\n- What the student should do today\n- Time blocks\n- One short motivation tip\n- One strict productivity rule\n\n6. Performance Feedback System\n- If a student completes or skips tasks, explain:\n  - How to measure consistency\n  - How to adjust the plan\n  - What to focus on next\n\n7. Smart Suggestions\n- Best study techniques for this student\n- Time management tips\n- How to improve weak subjects\n\nRules:\n- Keep it clear and practical\n- No long paragraphs\n- No fluff or generic motivation\n- Make the plan realistic and doable\n- Give more focus to weak subjects",
+    "revision_intents": [
+      "Avoid repeating the same study structure across days. Vary subjects, methods, and difficulty progression realistically.Ensure difficulty increases over time:\n- Early days → concept building\n- Mid phase → practice + problem solving\n- Final phase → mock tests + revisionDo not overload any single day. Ensure total study time does not exceed the user's daily limit. Include short breaks between sessions.Today's plan must be executable without thinking. Use exact time slots and clearly defined tasks.If the student falls behind, suggest a recovery plan that redistributes pending tasks without overwhelming the next day.If user prefers strict mode → tighter schedule, higher intensity\nIf flexible mode → lighter load, buffer time included",
+      "You MUST generate a complete multi-day study plan.\n\nRules:\n- If exam date is provided, calculate total days remaining\n- Generate a plan for ALL days from today until the exam date\n- Do NOT stop at one day\n- Do NOT summarize early days only\n- If the number of days is large:\n- Show FULL detail for at least the first 14 days\n- Then continue listing remaining days in shorter but still structured format\n\nFailure condition:\nIf you generate only one day or partial plan, the output is incorrect.",
+      "First determine total number of days, then generate the full plan step by step.",
+      "After completing all sections, append a final footer line.\n\nFooter:\nMade with ❤️ by Ayush Devspace(https://ayush-devspace5.web.app)\n\nRules:\n- Place it on a new line at the very end\n- Do not modify the text\n- Do not add anything after it",
+      "i want the same footer for the whole app from input to output and the text decoration for footer should be none",
+      "After completing all sections, append a final footer line.\n\nFooter:\nMade with ❤️ by Ayush Devspace(https://ayush-devspace5.web.app)\n\nRules:\n- Place it on a new line at the very end\n- Do not modify the text\n- Do not add anything after it",
+      "The response is NOT complete unless the footer is included.\n\nAfter generating all content, append this EXACT line as the final line:\n\nMade with ❤️ by [Ayush Devspace](https://ayush-devspace5.web.app)\n\nRules:\n- This must be the last line of the response\n- Do not change any characters, including brackets or emoji\n- Do not add anything after this line\n- Do not skip this line under any condition",
+      "i want the same footer for the whole app from input to output and the text decoration for footer should be none",
+      "The response is NOT complete unless the footer is included.\n\nAfter generating all content, append this EXACT line as the final line:\n\nMade with ❤️ by [Ayush Devspace](https://ayush-devspace5.web.app)\n\nRules:\n- This must be the last line of the response\n- Do not change any characters, including brackets or emoji\n- Do not add anything after this line\n- Do not skip this line under any condition"
+    ],
+    "raw_intent": "You are an expert study planner.\n\nCreate a complete, personalized study plan based on the student’s input.\n\nInput:\n{{all_inputs}}\n\nYour output should include:\n\n1. Student Summary\n- Exam name\n- Days remaining\n- Subjects\n- Weak areas\n- Daily study hours\n\n2. Study Strategy\n- Plan type (easy / balanced / aggressive)\n- Subject priority order\n- How daily time should be divided\n- Revision approach\n- Mock test frequency\n\n3. Study Plan\n- Create a detailed day-by-day plan for the next 14 days\n- For each day include:\n  - Subjects to study\n  - Tasks/topics\n  - Time allocation\n  - Revision time\n- After 14 days, give a simple weekly pattern for the remaining time\n\n4. Revision Plan\n- Show when to revise (Day 1, Day 3, Day 7, etc.)\n- Mention what subjects to revise and how long\n\n5. Today’s Plan\n- What the student should do today\n- Time blocks\n- One short motivation tip\n- One strict productivity rule\n\n6. Performance Feedback System\n- If a student completes or skips tasks, explain:\n  - How to measure consistency\n  - How to adjust the plan\n  - What to focus on next\n\n7. Smart Suggestions\n- Best study techniques for this student\n- Time management tips\n- How to improve weak subjects\n\nRules:\n- Keep it clear and practical\n- No long paragraphs\n- No fluff or generic motivation\n- Make the plan realistic and doable\n- Give more focus to weak subjects",
+    "parameters": {}
+  },
+  "url": "drive:/1FgRtPg--xbzkc80oNshQ2ZH9pw3bxAtq",
+  "assets": {},
+  "title": "PlanMyPrep ",
+  "description": "Create a personalized, detailed study plan for academic success.",
+  "version": "0.0.1",
+  "nodes": [
+    {
+      "id": "node_step_calculated_total_number_of_study_days",
+      "metadata": {
+        "title": "Calculate Total Study Days",
+        "visual": {
+          "x": 700,
+          "y": 350,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        },
+        "step_intent": "Calculate the total number of study days remaining from today until the exam_date. This calculation will be used to inform the personalized study plan generation. The input 'exam_date' will be used for the calculation. The 'generate_and_execute_python_code' API is used for accurate date calculations."
+      },
+      "type": "embed://a2/generate.bgl.json#module:main",
+      "configuration": {
+        "config$prompt": {
+          "parts": [
+            {
+              "text": "Objective: Calculate the total number of study days remaining from the current date until the specified exam date. Use the generate_and_execute_code tool to perform an accurate date calculation using Python.\n\nOutput Format: Provide the total number of remaining days as a single numeric value. Use the system_objective_fulfilled tool to report the final result.\n\nUser Input / Context: exam_date: {{\"type\":\"in\",\"path\":\"ask_user_exam_date\",\"title\":\"Exam Date\"}}"
+            }
+          ],
+          "role": "user"
+        },
+        "generation-mode": "agent"
+      }
+    },
+    {
+      "id": "node_step_personalized_study_plan_content",
+      "metadata": {
+        "title": "Generate Personalized Study Plan Content",
+        "visual": {
+          "x": 1050,
+          "y": 350,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        },
+        "step_intent": "Generate comprehensive and personalized study plan content based on the user's input, including exam name, exam date, subjects, weak areas, daily study hours, plan type preference, any additional user input, and the previously calculated total study days. The output should be the detailed textual content of the study plan."
+      },
+      "type": "embed://a2/generate.bgl.json#module:main",
+      "configuration": {
+        "config$prompt": {
+          "parts": [
+            {
+              "text": "Objective: Create a comprehensive and personalized study plan for the exam {{\"type\":\"in\",\"path\":\"ask_user_exam_name\",\"title\":\"Exam Name\"}} scheduled on {{\"type\":\"in\",\"path\":\"ask_user_exam_date\",\"title\":\"Exam Date\"}}. The plan must cover a total duration of {{\"type\":\"in\",\"path\":\"node_step_calculated_total_number_of_study_days\",\"title\":\"Calculate Total Study Days\"}} days with a daily commitment of {{\"type\":\"in\",\"path\":\"ask_user_daily_study_hours\",\"title\":\"Daily Study Hours\"}} hours. Distribute study time across the following subjects: {{\"type\":\"in\",\"path\":\"ask_user_subjects\",\"title\":\"Subjects\"}}, ensuring heavy emphasis and more time allocation for the specified weak areas: {{\"type\":\"in\",\"path\":\"ask_user_weak_areas\",\"title\":\"Weak Areas\"}}. The plan should follow the user's preferred style: {{\"type\":\"in\",\"path\":\"ask_user_plan_type_preference\",\"title\":\"Plan Type Preference\"}} and incorporate any additional requirements provided: {{\"type\":\"in\",\"path\":\"ask_user_user_input\",\"title\":\"User Input\"}}.\n\nOutput Format: Provide the complete textual content of the study plan. Ensure the schedule is logically sequenced and realistic given the daily hour limit. Once the content is generated, use system_objective_fulfilled to complete the task.\n\nUser Input / Context:\nExam Name: {{\"type\":\"in\",\"path\":\"ask_user_exam_name\",\"title\":\"Exam Name\"}}\nExam Date: {{\"type\":\"in\",\"path\":\"ask_user_exam_date\",\"title\":\"Exam Date\"}}\nTotal Study Days: {{\"type\":\"in\",\"path\":\"node_step_calculated_total_number_of_study_days\",\"title\":\"Calculate Total Study Days\"}}\nDaily Study Hours: {{\"type\":\"in\",\"path\":\"ask_user_daily_study_hours\",\"title\":\"Daily Study Hours\"}}\nSubjects: {{\"type\":\"in\",\"path\":\"ask_user_subjects\",\"title\":\"Subjects\"}}\nWeak Areas: {{\"type\":\"in\",\"path\":\"ask_user_weak_areas\",\"title\":\"Weak Areas\"}}\nPlan Type Preference: {{\"type\":\"in\",\"path\":\"ask_user_plan_type_preference\",\"title\":\"Plan Type Preference\"}}\nAdditional Context: {{\"type\":\"in\",\"path\":\"ask_user_user_input\",\"title\":\"User Input\"}}"
+            }
+          ],
+          "role": "user"
+        },
+        "generation-mode": "agent"
+      }
+    },
+    {
+      "id": "node_step_study_plan_html_report",
+      "metadata": {
+        "title": "Create Study Plan HTML Report",
+        "visual": {
+          "x": 1400,
+          "y": 350,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        },
+        "step_intent": "Assemble all collected user inputs (exam_name, exam_date, subjects, weak_areas, daily_study_hours, plan_type_preference, user_input), the calculated total number of study days, and the generated personalized study plan content into a single, well-structured HTML report. Ensure the report includes a consistent footer: 'Made with ❤️ by <a href=\"https://ayush-devspace5.web.app\" style=\"text-decoration: none;\">Ayush Devspace</a>'. The output should be a complete HTML document ready for display as the final output."
+      },
+      "type": "embed://a2/a2.bgl.json#module:render-outputs",
+      "configuration": {
+        "text": {
+          "parts": [
+            {
+              "text": "The webpage should present the study plan as a professional, clean, and highly readable report, designed to be encouraging and informative. The aesthetic goal is to be both functional and stylish, offering a premium user experience.\n\n**Layout Organization:**\n\n1.  **Overall Page Structure:** The page will have a `header`, a `main` content area composed of distinct sections, and a `footer`. All content should be centered within a maximum width container for optimal readability on larger screens, while being fluid on smaller screens.\n2.  **Header:** A prominent, clean header featuring the report title, \"Your Personalized Study Plan\". This should be distinct and easily identifiable.\n3.  **Main Content Area (Sectional Layout):**\n    *   **Plan Overview Section:** An introductory section at the top of the main content. This section will prominently display the `exam_name`, `exam_date`, and `calculate_total_study_days`. These should be presented clearly, perhaps in a brief summary card or a hero-like block, giving a quick overview.\n    *   **Your Input Snapshot Section:** Below the overview, present the collected user inputs (`subjects`, `weak_areas`, `daily_study_hours`, `plan_type_preference`, `user_input`). These should be organized into a responsive grid of elegant, informative cards. Each card will clearly label the input and display its value. For `subjects` and `weak_areas`, if they contain multiple items, display them as a list or clearly separated items within the card. `user_input` should be presented as a dedicated text block if it's substantial.\n    *   **Your Detailed Study Plan Section:** This will be the main body of the report, containing the `generate_personalized_study_plan_content`. This section should adopt an article-style layout, ensuring maximum readability for the extensive text. It needs clear paragraph breaks, ample line-height, and semantic headings (H2s for major sections, H3s for sub-sections within the plan) if the generated content implies such structure.\n4.  **Footer:** A consistent footer at the bottom of the page, centered, displaying 'Made with ❤️ by <a href=\"https://ayush-devspace5.web.app\" style=\"text-decoration: none;\">Ayush Devspace</a>'.\n\n**Style Design Language:**\n\n1.  **Visual Design Approach:** Modern, professional, and encouraging. The design should be clean with ample whitespace, creating a sense of clarity and focus. It should feel robust and trustworthy, yet visually inviting.\n2.  **Aesthetic Goal:** Professional, encouraging, and highly readable, with a polished, premium feel.\n3.  **Color Scheme:** A cool, calming, and professional palette. Utilize shades of deep blues and charcoal greys for primary text and backgrounds, with crisp whites for content areas. Introduce a subtle, inviting accent color (e.g., a muted teal, soft gold, or a warm orange) for key headings, call-outs, or card borders to provide a \"wow factor\" and guide the user's eye without being overwhelming.\n4.  **Typography Style:**\n    *   **Headings:** A clean, modern sans-serif font (e.g., Montserrat, Lato, Open Sans) for titles and section headings, conveying a strong and clear hierarchy.\n    *   **Body Text:** A highly readable sans-serif font (e.g., Roboto, Noto Sans, Source Sans Pro) for the detailed study plan content, optimized for long-form reading with generous line-height.\n5.  **Spacing and Layout Principles:**\n    *   **Generous Whitespace:** Crucial for readability and a clean, sophisticated look. Use ample padding within sections and around content blocks.\n    *   **Consistent Margins:** Maintain uniform margins between sections and elements for a cohesive and organized appearance.\n    *   **Responsive Design:** Employ a mobile-first approach. Use flexible grid systems (e.g., CSS Grid or Flexbox) for the card layout and scalable typography. Images (if any are introduced by the plan content) should be adaptive. The layout must seamlessly adjust to various screen sizes, prioritizing content readability on all devices.\n\n**Component Guidelines:**\n\n1.  **Informative Cards:** Use well-designed cards with clear labels and values for presenting individual user inputs in the \"Input Snapshot\" section. Each card should have subtle shadows or borders to define its boundaries.\n2.  **Article-Style Presentation:** The main study plan content (`generate_personalized_study_plan_content`) should be formatted like an article. This includes appropriate `p` tags for paragraphs, `ul`/`ol` for lists, and `h2`/`h3` for internal headings, ensuring the text is easy to scan and digest.\n3.  **Semantic HTML:** Utilize appropriate semantic HTML tags (`<header>`, `<main>`, `<section>`, `<footer>`, `<h1>` through `<h6>`) to ensure accessibility and proper document structure.\n\nexam_name: {{\"type\":\"in\",\"path\":\"ask_user_exam_name\",\"title\":\"Exam Name\"}}\n\nexam_date: {{\"type\":\"in\",\"path\":\"ask_user_exam_date\",\"title\":\"Exam Date\"}}\n\nsubjects: {{\"type\":\"in\",\"path\":\"ask_user_subjects\",\"title\":\"Subjects\"}}\n\nweak_areas: {{\"type\":\"in\",\"path\":\"ask_user_weak_areas\",\"title\":\"Weak Areas\"}}\n\ndaily_study_hours: {{\"type\":\"in\",\"path\":\"ask_user_daily_study_hours\",\"title\":\"Daily Study Hours\"}}\n\nplan_type_preference: {{\"type\":\"in\",\"path\":\"ask_user_plan_type_preference\",\"title\":\"Plan Type Preference\"}}\n\nuser_input: {{\"type\":\"in\",\"path\":\"ask_user_user_input\",\"title\":\"User Input\"}}\n\ntotal_study_days: {{\"type\":\"in\",\"path\":\"node_step_calculated_total_number_of_study_days\",\"title\":\"Calculate Total Study Days\"}}\n\npersonalized_study_plan_content: {{\"type\":\"in\",\"path\":\"node_step_personalized_study_plan_content\",\"title\":\"Generate Personalized Study Plan Content\"}}"
+            }
+          ],
+          "role": "user"
+        },
+        "b-system-instruction": {
+          "parts": [
+            {
+              "text": "You are an AI Web Developer. Your task is to generate a single, self-contained HTML document for rendering in an iframe, based on user instructions and data.\n\n**Visual aesthetic:**\n    * Aesthetics are crucial. Make the page look amazing, especially on mobile.\n    * Respect any instructions on style, color palette, or reference examples provided by the user.\n    * **CRITICAL: Aim for premium, state-of-the-art designs. Avoid simple minimum viable products.**\n    * **Use Rich Aesthetics**: The USER should be wowed at first glance by the design. Use best practices in modern web design (e.g. vibrant colors, dark modes, glassmorphism, and dynamic animations) to create a stunning first impression. Failure to do this is UNACCEPTABLE.\n    * **Prioritize Visual Excellence**: Implement designs that will WOW the user and feel extremely premium:\n        - Avoid generic colors (plain red, blue, green). Use curated, harmonious color palettes (e.g., HSL tailored colors, sleek dark modes).\n        - Using modern typography (e.g., from Google Fonts like Inter, Roboto, or Outfit) instead of browser defaults.\n        - Use smooth gradients.\n        - Add subtle micro-animations for enhanced user experience.\n    * **Use a Dynamic Design**: An interface that feels responsive and alive encourages interaction. Achieve this with hover effects and interactive elements. Micro-animations, in particular, are highly effective for improving user engagement.\n    * **Thematic Specificity**: Do not just create a generic layout. Define a clear \"vibe\" or theme based on the content. Use specific aesthetic keywords (e.g., \"Glassmorphism\", \"Neobrutalism\", \"Minimalist\", \"Comic Book Style\") to guide the design.\n    * **Typography Hierarchy**: Explicitly import and use font pairings. Use a distinct Display Font for headers and a highly readable Body Font for text.\n    * **Readability**: Pay extra attention to readability. Ensure the text is always readable with sufficient contrast against the background. Choose fonts and colors that enhance legibility.\n\n**Design and Functionality:**\n    * **Component-Based Design**: Do not just dump text into blocks. Semanticize the content into distinct UI components.\n    * **Layout Dynamics**: Break the grid. Avoid strict, identical grid columns. Use asymmetrical layouts, Bento grids, or responsive flexbox layouts where some elements span full width to create visual interest and emphasize key content.\n    * **Tailwind Configuration**: Extend the Tailwind configuration within a `<script>` block to define custom font families and color palettes that match the theme.\n    * Thoroughly analyze the user's instructions to determine the desired type of webpage, application, or visualization. What are the key features, layouts, or functionality?\n    * Analyze any provided data to identify the most compelling layout or visualization of it. For example, if the user requests a visualization, select an appropriate chart type (bar, line, pie, scatter, etc.) to create the most insightful and visually compelling representation. Or if user instructions say `use a carousel format`, you should consider how to break the content and any media into different card components to display within the carousel.\n    * If requirements are underspecified, make reasonable assumptions to complete the design and functionality. Your goal is to deliver a working product with no placeholder content.\n    * Ensure the generated code is valid and functional. Return only the code, and open the HTML codeblock with the literal string \"```html\".\n    * The output must be a complete and valid HTML document with no placeholder content for the developer to fill in.\n\n**Libraries:**\n  Unless otherwise specified, use:\n    * Tailwind for CSS\n    * **CRITICAL: Use the Tailwind CDN from `https://cdn.tailwindcss.com`. Do NOT use `tailwind.min.css` or any other local Tailwind file. Always include Tailwind using: `<script src=\"https://cdn.tailwindcss.com\"></script>`**\n\n**Constraints:**\n  * **External Links:** You ARE allowed to generate external links (`<a href=\"...\">` and `window.open(...)`) to external websites (e.g. google.com, wikipedia.org) for user navigation.\n  * **NO External Embeds:** Do NOT embed any external resources (e.g. `<script src=\"...\">`, `<img src=\"...\">`, `<iframe src=\"...\">`, `<link href=\"...\">`) from external URLs. Content Security Policy (CSP) will block them.\n  * **Media Restriction:** ONLY use media URLs that are explicitly passed in the input. Do NOT generate or hallucinate any other media URLs (e.g. from placeholder sites or external CDNs).\n  * **Render All Media:** You MUST render ALL media (images, videos, audio) that are passed in. Do NOT skip or omit any provided media items. Every passed-in media URL must appear in the final HTML output.\n  * **Navigation Restriction:** Do NOT generate unneeded fake links or buttons to sub-pages (e.g. \"About\", \"Contact\", \"Learn More\") unless explicitly requested. Stick to the plan and the provided content.\n  * **Footer Restriction:** **NEVER** generate any footer content, including legal footers like \"All rights reserved\" or \"Copyright 2024\". [It is a violation of Google's policies to hallucinate legal footers.]\n"
+            }
+          ],
+          "role": "user"
+        },
+        "p-render-mode": "Auto",
+        "b-render-model-name": "gemini-flash"
+      }
+    },
+    {
+      "id": "ask_user_exam_name",
+      "metadata": {
+        "title": "Exam Name",
+        "visual": {
+          "x": 250,
+          "y": 300,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "Enter the name of your exam."
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    },
+    {
+      "id": "ask_user_exam_date",
+      "metadata": {
+        "title": "Exam Date",
+        "visual": {
+          "x": 250,
+          "y": 450,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "When is your exam? (e.g., YYYY-MM-DD)"
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    },
+    {
+      "id": "ask_user_subjects",
+      "metadata": {
+        "title": "Subjects",
+        "visual": {
+          "x": 250,
+          "y": 600,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "List subjects you need to study."
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    },
+    {
+      "id": "ask_user_weak_areas",
+      "metadata": {
+        "title": "Weak Areas",
+        "visual": {
+          "x": 250,
+          "y": 750,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "Specify your weak areas for focus."
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    },
+    {
+      "id": "ask_user_daily_study_hours",
+      "metadata": {
+        "title": "Daily Study Hours",
+        "visual": {
+          "x": 250,
+          "y": 900,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "How many hours can you study daily?"
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    },
+    {
+      "id": "ask_user_plan_type_preference",
+      "metadata": {
+        "title": "Plan Type Preference",
+        "visual": {
+          "x": 250,
+          "y": 1050,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "Do you prefer a detailed or flexible plan?"
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    },
+    {
+      "id": "ask_user_user_input",
+      "metadata": {
+        "title": "User Input",
+        "visual": {
+          "x": 250,
+          "y": 1200,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        }
+      },
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "configuration": {
+        "description": {
+          "parts": [
+            {
+              "text": "Any additional preferences for your plan?"
+            }
+          ],
+          "role": "user"
+        },
+        "p-modality": "Any"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "ask_user_exam_date",
+      "to": "node_step_calculated_total_number_of_study_days",
+      "out": "context",
+      "in": "p-z-ask_user_exam_date"
+    },
+    {
+      "from": "ask_user_exam_date",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_exam_date"
+    },
+    {
+      "from": "ask_user_exam_date",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_exam_date"
+    },
+    {
+      "from": "ask_user_daily_study_hours",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_daily_study_hours"
+    },
+    {
+      "from": "ask_user_daily_study_hours",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_daily_study_hours"
+    },
+    {
+      "from": "ask_user_exam_name",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_exam_name"
+    },
+    {
+      "from": "ask_user_exam_name",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_exam_name"
+    },
+    {
+      "from": "ask_user_plan_type_preference",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_plan_type_preference"
+    },
+    {
+      "from": "ask_user_plan_type_preference",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_plan_type_preference"
+    },
+    {
+      "from": "ask_user_subjects",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_subjects"
+    },
+    {
+      "from": "ask_user_subjects",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_subjects"
+    },
+    {
+      "from": "node_step_calculated_total_number_of_study_days",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-node_step_calculated_total_number_of_study_days"
+    },
+    {
+      "from": "node_step_calculated_total_number_of_study_days",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-node_step_calculated_total_number_of_study_days"
+    },
+    {
+      "from": "ask_user_user_input",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_user_input"
+    },
+    {
+      "from": "ask_user_user_input",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_user_input"
+    },
+    {
+      "from": "ask_user_weak_areas",
+      "to": "node_step_personalized_study_plan_content",
+      "out": "context",
+      "in": "p-z-ask_user_weak_areas"
+    },
+    {
+      "from": "ask_user_weak_areas",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-ask_user_weak_areas"
+    },
+    {
+      "from": "node_step_personalized_study_plan_content",
+      "to": "node_step_study_plan_html_report",
+      "out": "context",
+      "in": "p-z-node_step_personalized_study_plan_content"
+    }
+  ]
+}
